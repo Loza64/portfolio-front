@@ -1,0 +1,11 @@
+<article #article>
+  <div class="circle-container">
+    <svg viewBox="0 0 100 100">
+      <circle class="circle" [ngStyle]="{'--percentage': skill.percentage}" />
+      <text x="52%" y="54%" text-anchor="middle" dominant-baseline="middle">
+        {{ skill.percentage }}%
+      </text>
+    </svg>
+  </div>
+  <span>{{ skill.name }}</span>
+</article>

@@ -1,0 +1,293 @@
+header {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 6rem;
+    overflow: hidden;
+    gap: 2rem
+}
+
+@media only screen and (max-width: 790px) {
+    header {
+        flex-direction: column-reverse;
+        padding: 3rem 1rem;
+        height: auto;
+    }
+}
+
+/** content */
+header .content {
+    width: 100%;
+    max-width: 70rem;
+}
+
+header .content h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    animation: h1-animate 2s forwards;
+}
+
+@keyframes h1-animate {
+    0% {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+header .content h1 span {
+    color: rgb(153, 255, 0);
+}
+
+
+header .content p {
+    font-size: 1.4rem;
+    color: rgb(145, 145, 145);
+    margin-bottom: 2.5rem;
+    font-weight: bold;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    animation: typing-paragraph 4s steps(200, end) forwards, line-by-line 4s forwards;
+    animation-fill-mode: forwards;
+    white-space: pre-line;
+}
+
+@keyframes typing-paragraph {
+    to {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+
+header .content p .cursor {
+    padding: 0 4.5px;
+    background-color: rgb(153, 255, 0);
+    margin: 0 4px;
+    animation: cursor-effect .5s alternate infinite;
+    display: inline-bloc
+}
+
+@keyframes cursor-effect {
+    0% {
+        background-color: transparent;
+    }
+
+    100% {
+        background-color: rgb(153, 255, 0);
+    }
+}
+
+header .social {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 780px) {
+    header .social {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+header .social a {
+    color: white;
+    font-size: 1.6rem;
+    transition: all .2s ease-in-out;
+}
+
+header .social a:hover {
+    color: rgb(153, 255, 0);
+    transform: scale(1.2);
+}
+
+header .content .cv {
+    background: transparent;
+    color: rgb(153, 255, 0);
+    padding: .6rem 1rem;
+    border: solid 4px rgb(153, 255, 0);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+    font-weight: 900;
+    animation-name: show_button;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    display: inline-block;
+    transform-origin: center;
+}
+
+@keyframes show_button {
+    0% {
+        transform: scale(0%);
+    }
+
+    50% {
+        transform: scale(120%);
+    }
+
+    100% {
+        transform: scale(100%);
+    }
+}
+
+header .content .cv:hover {
+    color: white;
+    border: solid 4px white;
+}
+
+header .content .cv:active {
+    transform: scale(0.95);
+}
+
+
+@media only screen and (max-width:1280px) {
+    header .content h1 {
+        font-size: 2.4rem;
+    }
+
+    header .content p {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width:955px) {
+    header .content h1 {
+        font-size: 2rem;
+    }
+
+    header .content .cv {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 780px) {
+    header .content {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    header .content h1 {
+        font-size: 2.5rem;
+    }
+
+    header .content p {
+        font-size: 1.2rem;
+    }
+
+    header .content .cv {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    header .content h1 {
+        font-size: 1.8rem;
+    }
+
+    header .content p {
+        font-size: 0.8rem;
+    }
+
+    header .content .cv {
+        font-size: 1rem;
+    }
+}
+
+/** Image */
+
+header .img-container {
+    width: 100%;
+    border-radius: 10px;
+    animation: show-image 2s forwards;
+}
+
+header .img-container {
+    width: 100%;
+    max-width: 19rem;
+    transition: all .3s ease-in-out;
+    box-shadow: rgb(153, 255, 0) 0px 0px 10px 10px;
+    border-radius: 10px;
+    transition: all .3s ease-in-out;
+    animation: show-image 1.5s alternate, shadow-img 1s infinite alternate;
+    transform: rotate(15.5deg);
+}
+
+@keyframes show-image {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(15.5deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(115%) rotate(15.5deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(100%) rotate(15.5deg);
+    }
+
+}
+
+@keyframes shadow-img {
+    0% {
+        box-shadow: 0 0 7px 7px rgb(153, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 7px 7px white;
+    }
+}
+
+@media only screen and (max-width: 880px) {
+    header .img-container {
+        width: auto;
+        max-width: 15rem;
+    }
+}
+
+header .img-container .border-green {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: rgb(153, 255, 0);
+    transform: rotate(15deg);
+}
+
+header .img-container .border-green .border-white {
+    width: 100%;
+    height: 100%;
+    background: white;
+    transform: rotate(-50deg);
+    border-radius: 10px;
+}
+
+header .img-container .border-green .border-white img {
+    width: 100%;
+    border-radius: 10px;
+    transform: rotate(19.5deg);
+    padding: .2rem;
+
+}
+
+@media only screen and (max-width: 420px) {
+    header .img-container {
+        max-width: 10rem;
+    }
+
+    header .img-container .border-green .border-white img {
+        padding: none;
+    }
+
+}

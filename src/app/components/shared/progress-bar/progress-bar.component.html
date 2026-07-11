@@ -1,0 +1,11 @@
+<article #article>
+  <div class="content">
+    <div class="icon">
+      <img [src]="skill.image.url" alt="img">
+      <label>{{ skill.name }}</label>
+    </div>
+    <label class="percentage">{{ skill.percentage }}%</label>
+  </div>
+  <div class="bar" [ngStyle]="{'--percentage': skill.percentage + '%'}" [attr.data-percentage]="skill.percentage">
+  </div>
+</article>

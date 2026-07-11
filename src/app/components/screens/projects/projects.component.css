@@ -1,0 +1,32 @@
+section {
+  padding: 10px;
+  margin: 30px 55px;
+}
+
+@media (max-width: 470px) {
+  section {
+    margin: 35px 10px;
+  }
+}
+
+section h2 {
+  text-align: center;
+  color: rgb(153, 255, 0);
+  margin: 20px 0;
+  font-size: 35px;
+}
+
+section .list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px 40px;
+}
+
+@media (max-width: 990px) {
+  section .list {
+    gap: 20px;
+  }
+}

@@ -1,0 +1,103 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.9rem;
+    width: 100%;
+    padding: 20px 20px;
+    box-shadow: 3px 3px 3px 0px white;
+    border-radius: 10px;
+}
+
+form div {
+    display: flex;
+    gap: 1.9rem;
+    width: 100%;
+}
+
+@media (max-width: 380px) {
+    form div {
+        flex-direction: column;
+    }
+}
+
+form div input,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    background-color: transparent;
+    box-shadow: 0 0 3px 3px rgb(119, 255, 0);
+    color: white;
+    resize: none;
+    font-weight: 800;
+    transition: all 0.3s ease-in-out;
+}
+
+form div input.error,
+form textarea.error {
+    box-shadow: 0 0 3px 3px red;
+}
+
+
+form div input:focus,
+form textarea:focus {
+    box-shadow: 0 0 5px 5px;
+    background-color: rgba(255, 255, 255, 0.036);
+}
+
+
+form div input:focus.error {
+    box-shadow: 0 0 5px 5px red;
+}
+
+form textarea:focus.error {
+    box-shadow: 0 0 5px 5px red;
+}
+
+form input[type="submit"] {
+    cursor: pointer;
+    background-color: rgb(36, 36, 36);
+    color: white;
+    font-weight: 900;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+form input[type="submit"]:hover {
+    color: black;
+    background-color: rgb(153, 255, 0);
+    box-shadow: 3px 3px 3px rgb(153, 255, 0);
+}
+
+form input[type="submit"]:disabled {
+    background-color: rgb(36, 36, 36);
+    color: rgb(153, 255, 0);
+    cursor: not-allowed;
+    box-shadow: 3px 3px 3px rgb(153, 255, 0);
+    animation: loading 1s infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+form input[type="submit"]:disabled:hover {
+    background-color: rgb(36, 36, 36);
+    color: rgb(153, 255, 0);
+    cursor: not-allowed;
+}
+@keyframes loading {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.05);
+    }
+
+}

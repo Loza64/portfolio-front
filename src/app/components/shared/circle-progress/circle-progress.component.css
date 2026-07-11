@@ -1,0 +1,90 @@
+article {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  transition: all .3s ease-in-out;
+  animation: animate-article-circle 1s 1;
+  gap: 10px;
+}
+
+@media only screen and (max-width: 400px) {
+  article {
+    gap: 0px;
+  }
+}
+
+@keyframes animate-article-circle {
+  0% {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+article span {
+  color: white;
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 400px) {
+  article span {
+    font-size: 1rem;
+  }
+}
+
+article .circle-container {
+  max-width: 135px;
+  max-height: 135px;
+  box-shadow: 0px 0px 5px 5px rgb(153, 255, 0);
+  border-radius: 100%;
+}
+
+@media screen and (max-width: 438px) {
+  article .circle-container {
+    margin: 20px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  article .circle-container {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+article .circle-container svg {
+  width: 100%;
+  height: 100%;
+}
+
+article .circle-container svg text {
+  fill: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+article .circle-container svg .circle {
+  animation: circle-bar-animated 1s linear forwards;
+  transition: all 1s ease-in-out;
+  cx: 50%;
+  cy: 50%;
+  r: 45%;
+  fill: transparent;
+  stroke: rgb(153, 255, 0);
+  stroke-width: 15;
+  stroke-dasharray: 360;
+  stroke-dashoffset: calc(360 + (360 * (var(--percentage) / 100)));
+  stroke-linecap: round;
+}
+
+@keyframes circle-bar-animated {
+  from {
+    stroke-dashoffset: 360;
+  }
+}

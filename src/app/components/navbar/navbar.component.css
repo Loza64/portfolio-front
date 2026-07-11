@@ -1,0 +1,168 @@
+.navbar-container {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: 100vh;
+    z-index: 1000;
+}
+
+.navbar-container nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 90vh;
+    padding: 9px;
+    backdrop-filter: blur(15px);
+    border-radius: 5px;
+    margin: 10px 5px;
+    box-shadow: 4px 4px 4px rgb(153, 255, 0);
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/********** Navbar Media **********/
+@media only screen and (max-width: 780px) {
+    .navbar-container {
+        height: auto;
+        width: 100vw;
+        bottom: 0;
+    }
+
+    .navbar-container nav {
+        height: auto;
+        flex-direction: row;
+        margin: 12px;
+        animation-name: fadeInY;
+    }
+
+    @keyframes fadeInY {
+        from {
+            transform: translateY(10px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+}
+
+
+/********** a desing **********/
+.navbar-container a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    border-radius: 100%;
+    transition: all .3s ease-in-out;
+    margin: 10px 0px;
+    cursor:pointer;
+}
+
+.navbar-container a span {
+    position: absolute;
+    left: 31px;
+    color: black;
+    font-weight: 900;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    padding: 5px;
+    display: inline-block;
+    pointer-events: none;
+}
+
+.navbar-container a:hover span {
+    opacity: 1;
+    background-color: rgb(153, 255, 0);
+    color: #000;
+    left: 60px;
+    border-radius: 5px;
+}
+
+.navbar-container a mat-icon {
+    width: auto;
+    height: auto;
+    font-weight: 400;
+    font-size: 2rem;
+    padding: 2px;
+    border-radius: 100%;
+    transition: all .3s ease-in-out;
+    font-weight: bold;
+}
+
+.navbar-container a:hover mat-icon {
+    color: rgb(153, 255, 0);
+    transform: scale(120%);
+}
+
+@media only screen and (max-width: 790px){
+    .navbar-container a:hover mat-icon{
+        color: white;
+        transform: scale(100%);
+    }
+}
+
+.navbar-container .active:hover mat-icon {
+    color: black;
+    transform: scale(120%);
+}
+
+.navbar-container .active mat-icon {
+    background-color: rgb(153, 255, 0);
+    color: black;
+    transform: scale(120%);
+    box-shadow: 0px 0px 3px 3px rgb(153, 255, 0);
+}
+
+
+/********** a Media **********/
+@media only screen and (max-width: 1280px) {
+    .navbar-container a span {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    
+    .navbar-container a {
+        margin: 1px 15px;
+    }
+
+    .navbar-container a mat-icon {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .navbar-container a {
+        margin: 1px 5px;
+    }
+    .navbar-container a mat-icon {
+        font-size: 25px;
+    }
+}

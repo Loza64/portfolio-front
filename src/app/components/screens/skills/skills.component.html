@@ -1,0 +1,23 @@
+<section id="skills" #skills>
+  <h2>Habilidades</h2>
+  <div class="skills">
+    <div class="technicals">
+      <h3>Tecnicos</h3>
+      <div class="options">
+        <button (click)="filter = 'backend'" [class.active]="filter === 'backend'">Backend</button>
+        <button (click)="filter = 'frontend'" [class.active]="filter === 'frontend'">Frontend</button>
+        <button (click)="filter = 'database'" [class.active]="filter === 'database'">Database</button>
+        <button (click)="filter = 'others'" [class.active]="filter === 'others'">Otros</button>
+      </div>
+      <div class="list">
+        <app-progress-bar *ngFor="let skill of getTechnicalList()" [skill]="skill" />
+      </div>
+    </div>
+    <div class="professional">
+      <h3>Profesionales</h3>
+      <div class="list">
+        <app-circle-progress *ngFor="let skill of getProfessionalList()" [skill]="skill" />
+      </div>
+    </div>
+  </div>
+</section>

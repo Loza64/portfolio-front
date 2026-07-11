@@ -1,0 +1,170 @@
+section {
+    margin: 60px 0;
+    padding: 0 20px;
+}
+
+/* ---------- Encabezado ---------- */
+
+section .section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+section .eyebrow {
+    color: rgb(128, 255, 0);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 6px;
+}
+
+section h2 {
+    font-size: 2.2rem;
+    margin: 0;
+    color: white;
+    position: relative;
+    padding-bottom: 14px;
+}
+
+section h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 4px;
+    border-radius: 4px;
+    background: rgb(128, 255, 0);
+    box-shadow: 0 0 12px rgb(128, 255, 0);
+}
+
+@media (max-width: 600px) {
+    section h2 {
+        font-size: 1.7rem;
+    }
+}
+
+/* ---------- Grid de tarjetas ---------- */
+
+section .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section .timeline-card {
+    position: relative;
+    background: linear-gradient(160deg, rgba(20, 20, 20, 0.95), rgba(0, 0, 0, 0.95));
+    border: 1px solid rgba(128, 255, 0, 0.25);
+    border-radius: 16px;
+    padding: 22px;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+section .timeline-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: 3px;
+    background: linear-gradient(90deg, rgb(128, 255, 0), transparent 80%);
+}
+
+section .timeline-card:hover {
+    transform: translateY(-8px);
+    border-color: rgb(128, 255, 0);
+    box-shadow: 0 10px 30px -8px rgba(128, 255, 0, 0.45);
+}
+
+/* ---------- Cabecera de la tarjeta: icono + fecha ---------- */
+
+section .timeline-card .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+section .timeline-card .icon {
+    color: black;
+    background-color: rgb(128, 255, 0);
+    font-size: 1.4rem;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 100%;
+    box-shadow: 0 0 10px 2px rgba(128, 255, 0, 0.5);
+    flex-shrink: 0;
+}
+
+section .timeline-card .date-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgb(128, 255, 0);
+    background: rgba(128, 255, 0, 0.12);
+    border: 1px solid rgba(128, 255, 0, 0.35);
+    padding: 5px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+/* ---------- Contenido ---------- */
+
+section .timeline-card .content h3 {
+    font-size: 1.15rem;
+    line-height: 1.35;
+    color: white;
+    margin: 0 0 10px;
+}
+
+section .timeline-card .content p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.75);
+    text-align: left;
+    margin: 0;
+}
+
+section .timeline-card .content p.clamped {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+section .timeline-card .toggle-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: rgb(128, 255, 0);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+section .timeline-card .toggle-btn:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 490px) {
+    section .timeline-card .content h3 {
+        font-size: 1rem;
+    }
+
+    section .timeline-card .content p {
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+.services {
+    padding: 10px;
+    margin: 30px 55px;
+}
+
+@media only screen and (max-width: 470px) {
+    .services {
+        margin: 35px 10px;
+    }
+}
+
+.services h2 {
+    text-align: center;
+    color: rgb(153, 255, 0);
+    font-weight: 900;
+    font-size: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+}
+
+.services h2 .prompt-mark {
+    color: rgba(153, 255, 0, 0.5);
+    margin-right: 6px;
+}
+
+.services .list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+/* ---------- card shell ---------- */
+
+.services .list article {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(160deg, #0e130f 0%, #05070a 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: left;
+    animation: show-service 0.6s ease-in-out;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.7);
+}
+
+.services .list article:hover {
+    transform: translateY(-6px);
+    border-color: rgba(153, 255, 0, 0.45);
+    box-shadow: 0 20px 40px -22px rgba(153, 255, 0, 0.25), 0 0 0 1px rgba(153, 255, 0, 0.12);
+}
+
+@keyframes show-service {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ---------- terminal top bar ---------- */
+
+.services .list article .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.services .list article .traffic {
+    display: flex;
+    gap: 6px;
+}
+
+.services .list article .traffic .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.85;
+}
+
+.dot-a { background: #ff5f56; }
+.dot-b { background: #ffbd2e; }
+.dot-c { background: #27c93f; }
+
+.services .list article .file-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #7d8a80;
+    letter-spacing: 0.02em;
+}
+
+/* ---------- body ---------- */
+
+.services .list article .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 24px 20px 6px;
+    flex: 1;
+}
+
+.services .list article .icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 8px;
+    background: rgba(153, 255, 0, 0.08);
+    border: 1px solid rgba(153, 255, 0, 0.22);
+}
+
+.services .list article .icon-box i {
+    color: rgb(153, 255, 0);
+    font-size: 26px;
+}
+
+.services .list article .code-line {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.services .list article .kw {
+    color: #c586c0;
+}
+
+.services .list article .fn {
+    color: #dcdcaa;
+    font-weight: 700;
+}
+
+.services .list article .brace {
+    color: #7d8a80;
+}
+
+.services .list article .desc {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #c9d1c5;
+    margin: 0;
+}
+
+.services .list article .desc .comment {
+    color: #6a9955;
+}
+
+/* ---------- footer ---------- */
+
+.services .list article .card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px 18px 38px;
+}
+
+.services .list article .card-bottom .brace {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    color: #7d8a80;
+}
+
+.services .list article .cursor {
+    width: 8px;
+    height: 16px;
+    background: rgb(153, 255, 0);
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+@media only screen and (max-width: 601px) {
+    .services .list {
+        grid-template-columns: 1fr;
+    }
+}

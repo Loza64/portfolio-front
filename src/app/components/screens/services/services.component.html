@@ -1,0 +1,34 @@
+<section class="services" id="services" #section>
+  <h2><span class="prompt-mark">&gt;_</span> Mis servicios</h2>
+  <div class="list">
+    <article *ngFor="let item of listService; let i = index" #article>
+      <header class="card-top">
+        <span class="traffic">
+          <i class="dot dot-a"></i>
+          <i class="dot dot-b"></i>
+          <i class="dot dot-c"></i>
+        </span>
+        <span class="file-name">service-{{ (i + 1) < 10 ? '0' + (i + 1) : (i + 1) }}.ts</span>
+      </header>
+
+      <div class="card-body">
+        <div class="icon-box">
+          <i [ngClass]="item.icon"></i>
+        </div>
+
+        <p class="code-line">
+          <span class="kw">function</span>
+          <span class="fn">{{ item.title }}</span><span class="kw">()</span>
+          <span class="brace">{{ '{' }}</span>
+        </p>
+
+        <p class="desc"><span class="comment">// </span>{{ item.text }}</p>
+      </div>
+
+      <footer class="card-bottom">
+        <span class="brace">{{ '}' }}</span>
+        <span class="cursor" aria-hidden="true"></span>
+      </footer>
+    </article>
+  </div>
+</section>

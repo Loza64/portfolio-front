@@ -1,0 +1,29 @@
+<section id="about" #section>
+  <div class="section-header">
+    <span class="eyebrow">Mi trayectoria</span>
+    <h2>Experiencia y Educación</h2>
+  </div>
+
+  <div class="timeline-grid">
+    <article #article *ngFor="let item of about; let i = index" class="timeline-card">
+      <div class="card-top">
+        <mat-icon class="icon">{{ getIcon(item.title) }}</mat-icon>
+        <span class="date-badge">{{ item.date | date: 'MMM yyyy' }}</span>
+      </div>
+
+      <div class="content">
+        <h3>{{ item.title }}</h3>
+        <p [class.clamped]="!isExpanded(i)">{{ item.description }}</p>
+
+        <button
+          *ngIf="needsToggle(item.description)"
+          type="button"
+          class="toggle-btn"
+          (click)="toggleExpand(i)"
+        >
+          {{ isExpanded(i) ? 'Ver menos' : 'Ver más' }}
+        </button>
+      </div>
+    </article>
+  </div>
+</section>

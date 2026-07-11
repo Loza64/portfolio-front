@@ -1,0 +1,18 @@
+<form #form [formGroup]="fg" (ngSubmit)="onSubmit()" class="form">
+    <div>
+        <input autocomplete="off" type="text" formControlName="firstname" placeholder="nombre" id="firtsname"
+            [class.error]="!fg.get('firstname')?.valid && fg.get('firstname')?.touched">
+        <input autocomplete="off" type="text" formControlName="lastname" placeholder="apellido" id="lastname"
+            [class.error]="!fg.get('lastname')?.valid && fg.get('lastname')?.touched">
+    </div>
+    <div>
+        <input autocomplete="off" type="email" formControlName="email" placeholder="correo" id="email"
+            [class.error]="!fg.get('email')?.valid && fg.get('email')?.touched">
+        <input autocomplete="off" type="text" formControlName="phone" placeholder="teléfono" id="phone"
+            [class.error]="!fg.get('phone')?.valid && fg.get('phone')?.touched">
+    </div>
+    <textarea formControlName="message" id="message" placeholder="mensaje" rows="10"
+        [class.error]="!fg.get('message')?.valid && fg.get('message')?.touched"></textarea>
+
+    <input type="submit" class="loading" [value]="submitButtonText" id="send" [disabled]="isLoading">
+</form>

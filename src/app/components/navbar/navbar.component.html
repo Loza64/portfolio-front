@@ -1,0 +1,29 @@
+<div class="navbar-container">
+        <nav>
+                <a [routerLink]="['/']" (click)="scrollElement('home')"
+                        id="/home">
+                        <span>Home</span>
+                        <mat-icon class="icono">home</mat-icon>
+                </a>
+                <a [routerLink]="['/skills']" (click)="scrollElement('skills')" id="/skills">
+                        <span>Skills</span>
+                        <mat-icon class="icono">check</mat-icon>
+                </a>
+                <a [routerLink]="['/services']" (click)="scrollElement('services')" id="/services">
+                        <span>Servicios</span>
+                        <mat-icon class="icono">work_outline</mat-icon>
+                </a>
+                <a [routerLink]="['/projects']" (click)="scrollElement('projects')" id="/projects">
+                        <span>Proyectos</span>
+                        <mat-icon class="icono">code</mat-icon>
+                </a>
+                <a [routerLink]="['/about']" (click)="scrollElement('about')" id="/about">
+                        <span>Información</span>
+                        <mat-icon class="icono">account_circle</mat-icon>
+                </a>
+                <a [routerLink]="['/contact']" (click)="scrollElement('contact')" id="/contact">
+                        <span>Contacto</span>
+                        <mat-icon class="icono">mail_outline</mat-icon>
+                </a>
+        </nav>
+</div>
