@@ -2,7 +2,6 @@
 export interface Service {
   icon: string,
   title: string,
-  text: string
 }
 
 export interface Project {
@@ -35,7 +34,7 @@ export interface Technical {
 export interface Professional {
   id: string
   name: string,
-  percentage: number
+  icon: string
   createdAt: string
 }
 

@@ -1,24 +1,7 @@
 section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 5rem 1rem;
-}
-
-
-section .contact-header {
-    text-align: center;
-    color: white;
-    font-size: 25px;
-    margin: 20px 0;
-}
-
-section .contact-header span {
-    color: rgb(153, 255, 0)
-}
-
-section .form-container {
-    width: 100%;
-    max-width: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 5rem 1rem;
 }

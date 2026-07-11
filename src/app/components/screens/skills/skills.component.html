@@ -16,7 +16,7 @@
     <div class="professional">
       <h3>Profesionales</h3>
       <div class="list">
-        <app-circle-progress *ngFor="let skill of getProfessionalList()" [skill]="skill" />
+        <app-tag *ngFor="let skill of getProfessionalList()" [item]="skill" />
       </div>
     </div>
   </div>

@@ -1,0 +1,60 @@
+:host {
+  --bg-panel: #161b22;
+  --track-bg: #0d1117;
+  --border-color: #30363d;
+  --text-primary: #c9d1d9;
+  --text-muted: #8b949e;
+  --accent-from: #3fb950;
+  --accent-to: #58a6ff;
+}
+
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.6rem 0.85rem;
+  border-radius: 6px;
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  font-family: 'JetBrains Mono', monospace;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease;
+}
+
+.tag-chip:hover {
+  border-color: #3d4652;
+}
+
+.tag-chip .icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  background-color: var(--track-bg);
+  flex-shrink: 0;
+}
+
+.tag-chip .icon-wrap i {
+  font-size: 0.85rem;
+  background: linear-gradient(90deg, var(--accent-from), var(--accent-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tag-chip label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tag-chip {
+    transition: none;
+  }
+}

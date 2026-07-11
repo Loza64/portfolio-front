@@ -3,6 +3,11 @@ import { CommonModule } from '@angular/common';
 import { Professional } from '../../../services/ModelsInterface';
 import { ObserverService } from '../../../services/ObserverService';
 
+interface Data {
+  name: string
+  percentage: number
+}
+
 @Component({
   selector: 'app-circle-progress',
   standalone: true,
@@ -11,7 +16,7 @@ import { ObserverService } from '../../../services/ObserverService';
   styleUrls: ['./circle-progress.component.css'],
 })
 export class CircleProgressComponent implements AfterViewInit, OnDestroy {
-  @Input() skill!: Professional;
+  @Input() data!: Data;
   @ViewChild('article') articleRef!: ElementRef;
 
   constructor(private observerService: ObserverService) { }

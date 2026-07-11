@@ -5,11 +5,12 @@ import { ObserverService } from '../../../services/ObserverService';
 import { ApiService } from '../../../services/api/api.service';
 import { ProgressBarComponent } from '../../shared/progress-bar/progress-bar.component';
 import { CircleProgressComponent } from '../../shared/circle-progress/circle-progress.component';
+import { TagComponent } from '../../shared/tag/tag.component';
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [CommonModule, ProgressBarComponent, CircleProgressComponent],
+  imports: [CommonModule, ProgressBarComponent, TagComponent],
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css'],
 })

@@ -20,6 +20,7 @@ section .skills {
   display: flex;
   justify-content: center;
   width: 100%;
+  gap: 1.5rem;
 }
 
 @media screen and (max-width: 595px) {
@@ -31,7 +32,6 @@ section .skills {
 @media screen and (max-width: 860px) {
   section .skills {
     flex-direction: column;
-    gap: 1.5rem;
   }
 }
 
@@ -96,7 +96,7 @@ section .skills .technicals h3,
 section .skills .technicals .list {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
@@ -112,11 +112,11 @@ section .skills .professional {
 }
 
 section .skills .professional .list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 30fr));
-  text-align: center;
-  justify-items: center;
-  gap: 35px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
   padding: 10px 20px;
   width: 100%;
 }
