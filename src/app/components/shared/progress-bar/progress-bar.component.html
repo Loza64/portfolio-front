@@ -1,11 +1,25 @@
-<article #article>
+<article class="progress" #article>
   <div class="content">
     <div class="icon">
-      <img [src]="skill.image.url" alt="img">
+      <img [src]="skill.image.url" [alt]="skill.name" loading="lazy" />
       <label>{{ skill.name }}</label>
     </div>
-    <label class="percentage">{{ skill.percentage }}%</label>
+    <label class="percentage">
+      <span class="percentage__prompt" aria-hidden="true">&gt;</span>
+      {{ skill.percentage }}%
+    </label>
   </div>
-  <div class="bar" [ngStyle]="{'--percentage': skill.percentage + '%'}" [attr.data-percentage]="skill.percentage">
+
+  <div class="track">
+    <div
+      class="bar"
+      [ngStyle]="{ '--percentage': skill.percentage + '%' }"
+      [attr.data-percentage]="skill.percentage"
+      role="progressbar"
+      [attr.aria-valuenow]="skill.percentage"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      [attr.aria-label]="skill.name"
+    ></div>
   </div>
 </article>

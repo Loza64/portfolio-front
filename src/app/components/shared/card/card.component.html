@@ -1,18 +1,50 @@
-<article class="card" #article>
-  <i class="fa-regular fa-file-alt view"></i>
-  <div class="card-inner">
-    <img [src]="project.image.url" alt="{{ project.title }}" loading="lazy" />
-    <div class="body">
-      <h3>{{ project.title }}</h3>
-      <p>{{ project.description }}</p>
-      <div class="links">
-        <a *ngIf="project.links.github" [href]="project.links.github" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-github"><span>GitHub</span></i>
+<article class="card" #article tabindex="0">
+  <div class="card__titlebar">
+    <div class="card__dots" aria-hidden="true">
+      <span class="dot dot--red"></span>
+      <span class="dot dot--yellow"></span>
+      <span class="dot dot--green"></span>
+    </div>
+    <span class="card__filename">{{ fileName }}</span>
+  </div>
+
+  <div class="card__viewport">
+    <img [src]="project.image.url" [alt]="project.title" loading="lazy" class="card__image" />
+    <div class="card__scanline" aria-hidden="true"></div>
+
+    <div class="card__overlay">
+      <h3 class="card__title">{{ project.title }}</h3>
+      <p class="card__comment">// {{ project.description }}</p>
+
+      <div class="card__actions" *ngIf="project.links.github || project.links.app">
+        <a
+          *ngIf="project.links.github"
+          class="card__cmd"
+          [href]="project.links.github"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Ver código fuente en GitHub"
+        >
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+          <span>git clone</span>
         </a>
-        <a *ngIf="project.links.app" [href]="project.links.app" target="_blank" rel="noopener noreferrer">
-          <i class="fa-solid fa-eye"><span>View</span></i>
+        <a
+          *ngIf="project.links.app"
+          class="card__cmd card__cmd--accent"
+          [href]="project.links.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Ver demo en vivo"
+        >
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+          <span>./run --demo</span>
         </a>
       </div>
     </div>
+  </div>
+
+  <div class="card__statusbar">
+    <span class="card__branch"><i class="fa-solid fa-code-branch" aria-hidden="true"></i> main</span>
+    <span class="card__status"><span class="card__status-dot"></span> ready</span>
   </div>
 </article>

@@ -16,6 +16,15 @@ export class CardComponent implements AfterViewInit, OnDestroy {
 
   constructor(private observerService: ObserverService) { }
 
+  get fileName(): string {
+    const slug = this.project.title
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9-]/g, '');
+    return `${slug}.tsx`;
+  }
+
   ngAfterViewInit(): void {
     const el = this.articleRef.nativeElement;
     this.observerService.observe(el);

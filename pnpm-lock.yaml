@@ -47,6 +47,9 @@ importers:
       '@coreui/icons':
         specifier: ^3.0.1
         version: 3.1.0
+      '@fontsource/jetbrains-mono':
+        specifier: ^5.2.8
+        version: 5.2.8
       express:
         specifier: ^4.18.2
         version: 4.22.2
@@ -68,7 +71,7 @@ importers:
     devDependencies:
       '@angular-devkit/build-angular':
         specifier: ^19.1.7
-        version: 19.2.27(@angular/compiler-cli@19.2.25(@angular/compiler@19.2.25)(typescript@5.7.3))(@angular/compiler@19.2.25)(@angular/platform-server@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/compiler@19.2.25)(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@19.2.25(@angular/animations@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2))(@angular/ssr@19.2.27(2cc002391cbacab68bf0e2b7601f3527))(@types/node@18.19.130)(chokidar@4.0.3)(jiti@1.21.7)(karma@6.4.4)(typescript@5.7.3)(vite@6.4.2(@types/node@18.19.130)(jiti@1.21.7)(less@4.2.2)(sass@1.85.0)(terser@5.39.0))
+        version: 19.2.27(@angular/compiler-cli@19.2.25(@angular/compiler@19.2.25)(typescript@5.7.3))(@angular/compiler@19.2.25)(@angular/platform-server@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/compiler@19.2.25)(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@19.2.25(@angular/animations@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2))(@angular/ssr@19.2.27(2cc002391cbacab68bf0e2b7601f3527))(@types/node@18.19.130)(chokidar@4.0.3)(jiti@1.21.7)(karma@6.4.4(debug@4.4.3))(typescript@5.7.3)(vite@6.4.2(@types/node@18.19.130)(jiti@1.21.7)(less@4.2.2)(sass@1.85.0)(terser@5.39.0))
       '@angular/cli':
         specifier: ^19.1.7
         version: 19.2.27(@types/node@18.19.130)(chokidar@4.0.3)
@@ -89,7 +92,7 @@ importers:
         version: 5.5.0
       karma:
         specifier: ~6.4.0
-        version: 6.4.4
+        version: 6.4.4(debug@4.4.3)
       karma-chrome-launcher:
         specifier: ~3.2.0
         version: 3.2.0
@@ -98,10 +101,10 @@ importers:
         version: 2.2.1
       karma-jasmine:
         specifier: ~5.1.0
-        version: 5.1.0(karma@6.4.4)
+        version: 5.1.0(karma@6.4.4(debug@4.4.3))
       karma-jasmine-html-reporter:
         specifier: ~2.1.0
-        version: 2.1.0(jasmine-core@5.5.0)(karma-jasmine@5.1.0(karma@6.4.4))(karma@6.4.4)
+        version: 2.1.0(jasmine-core@5.5.0)(karma-jasmine@5.1.0(karma@6.4.4(debug@4.4.3)))(karma@6.4.4(debug@4.4.3))
       typescript:
         specifier: ~5.7.2
         version: 5.7.3
@@ -1173,6 +1176,9 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource/jetbrains-mono@5.2.8':
+    resolution: {integrity: sha512-6w8/SG4kqvIMu7xd7wt6x3idn1Qux3p9N62s6G3rfldOUYHpWcc2FKrqf+Vo44jRvqWj2oAtTHrZXEP23oSKwQ==}
 
   '@inquirer/ansi@1.0.2':
     resolution: {integrity: sha512-S8qNSZiYzFd0wAcyG5AXCvUHC5Sr7xpZ9wZ2py9XR88jUz8wooStVx5M6dRzczbBWjic9NP7+rY0Xi7qqK/aMQ==}
@@ -4694,13 +4700,13 @@ snapshots:
     transitivePeerDependencies:
       - chokidar
 
-  '@angular-devkit/build-angular@19.2.27(@angular/compiler-cli@19.2.25(@angular/compiler@19.2.25)(typescript@5.7.3))(@angular/compiler@19.2.25)(@angular/platform-server@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/compiler@19.2.25)(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@19.2.25(@angular/animations@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2))(@angular/ssr@19.2.27(2cc002391cbacab68bf0e2b7601f3527))(@types/node@18.19.130)(chokidar@4.0.3)(jiti@1.21.7)(karma@6.4.4)(typescript@5.7.3)(vite@6.4.2(@types/node@18.19.130)(jiti@1.21.7)(less@4.2.2)(sass@1.85.0)(terser@5.39.0))':
+  '@angular-devkit/build-angular@19.2.27(@angular/compiler-cli@19.2.25(@angular/compiler@19.2.25)(typescript@5.7.3))(@angular/compiler@19.2.25)(@angular/platform-server@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/compiler@19.2.25)(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@19.2.25(@angular/animations@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2))(@angular/ssr@19.2.27(2cc002391cbacab68bf0e2b7601f3527))(@types/node@18.19.130)(chokidar@4.0.3)(jiti@1.21.7)(karma@6.4.4(debug@4.4.3))(typescript@5.7.3)(vite@6.4.2(@types/node@18.19.130)(jiti@1.21.7)(less@4.2.2)(sass@1.85.0)(terser@5.39.0))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.1902.27(chokidar@4.0.3)
       '@angular-devkit/build-webpack': 0.1902.27(chokidar@4.0.3)(webpack-dev-server@5.2.2(tslib@2.8.1)(webpack@5.105.0(postcss@8.5.12)))(webpack@5.105.0(postcss@8.5.12))
       '@angular-devkit/core': 19.2.27(chokidar@4.0.3)
-      '@angular/build': 19.2.27(@angular/compiler-cli@19.2.25(@angular/compiler@19.2.25)(typescript@5.7.3))(@angular/compiler@19.2.25)(@angular/platform-server@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/compiler@19.2.25)(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@19.2.25(@angular/animations@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2))(@angular/ssr@19.2.27(2cc002391cbacab68bf0e2b7601f3527))(@types/node@18.19.130)(chokidar@4.0.3)(jiti@1.21.7)(karma@6.4.4)(less@4.2.2)(postcss@8.5.12)(terser@5.39.0)(typescript@5.7.3)
+      '@angular/build': 19.2.27(@angular/compiler-cli@19.2.25(@angular/compiler@19.2.25)(typescript@5.7.3))(@angular/compiler@19.2.25)(@angular/platform-server@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/compiler@19.2.25)(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@19.2.25(@angular/animations@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2))(@angular/ssr@19.2.27(2cc002391cbacab68bf0e2b7601f3527))(@types/node@18.19.130)(chokidar@4.0.3)(jiti@1.21.7)(karma@6.4.4(debug@4.4.3))(less@4.2.2)(postcss@8.5.12)(terser@5.39.0)(typescript@5.7.3)
       '@angular/compiler-cli': 19.2.25(@angular/compiler@19.2.25)(typescript@5.7.3)
       '@babel/core': 7.26.10
       '@babel/generator': 7.26.10
@@ -4757,7 +4763,7 @@ snapshots:
       '@angular/platform-server': 19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/compiler@19.2.25)(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@19.2.25(@angular/animations@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
       '@angular/ssr': 19.2.27(2cc002391cbacab68bf0e2b7601f3527)
       esbuild: 0.28.0
-      karma: 6.4.4
+      karma: 6.4.4(debug@4.4.3)
     transitivePeerDependencies:
       - '@angular/compiler'
       - '@minify-html/node'
@@ -4824,7 +4830,7 @@ snapshots:
       '@angular/core': 19.2.25(rxjs@7.8.2)(zone.js@0.15.1)
       tslib: 2.8.1
 
-  '@angular/build@19.2.27(@angular/compiler-cli@19.2.25(@angular/compiler@19.2.25)(typescript@5.7.3))(@angular/compiler@19.2.25)(@angular/platform-server@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/compiler@19.2.25)(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@19.2.25(@angular/animations@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2))(@angular/ssr@19.2.27(2cc002391cbacab68bf0e2b7601f3527))(@types/node@18.19.130)(chokidar@4.0.3)(jiti@1.21.7)(karma@6.4.4)(less@4.2.2)(postcss@8.5.12)(terser@5.39.0)(typescript@5.7.3)':
+  '@angular/build@19.2.27(@angular/compiler-cli@19.2.25(@angular/compiler@19.2.25)(typescript@5.7.3))(@angular/compiler@19.2.25)(@angular/platform-server@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/compiler@19.2.25)(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@19.2.25(@angular/animations@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2))(@angular/ssr@19.2.27(2cc002391cbacab68bf0e2b7601f3527))(@types/node@18.19.130)(chokidar@4.0.3)(jiti@1.21.7)(karma@6.4.4(debug@4.4.3))(less@4.2.2)(postcss@8.5.12)(terser@5.39.0)(typescript@5.7.3)':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.1902.27(chokidar@4.0.3)
@@ -4858,7 +4864,7 @@ snapshots:
     optionalDependencies:
       '@angular/platform-server': 19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/compiler@19.2.25)(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@19.2.25(@angular/animations@19.2.25(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@19.2.25(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.25(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
       '@angular/ssr': 19.2.27(2cc002391cbacab68bf0e2b7601f3527)
-      karma: 6.4.4
+      karma: 6.4.4(debug@4.4.3)
       less: 4.2.2
       lmdb: 3.2.6
       postcss: 8.5.12
@@ -5898,6 +5904,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.28.0':
     optional: true
+
+  '@fontsource/jetbrains-mono@5.2.8': {}
 
   '@inquirer/ansi@1.0.2': {}
 
@@ -7991,22 +7999,22 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  karma-jasmine-html-reporter@2.1.0(jasmine-core@5.5.0)(karma-jasmine@5.1.0(karma@6.4.4))(karma@6.4.4):
+  karma-jasmine-html-reporter@2.1.0(jasmine-core@5.5.0)(karma-jasmine@5.1.0(karma@6.4.4(debug@4.4.3)))(karma@6.4.4(debug@4.4.3)):
     dependencies:
       jasmine-core: 5.5.0
-      karma: 6.4.4
-      karma-jasmine: 5.1.0(karma@6.4.4)
+      karma: 6.4.4(debug@4.4.3)
+      karma-jasmine: 5.1.0(karma@6.4.4(debug@4.4.3))
 
-  karma-jasmine@5.1.0(karma@6.4.4):
+  karma-jasmine@5.1.0(karma@6.4.4(debug@4.4.3)):
     dependencies:
       jasmine-core: 4.6.1
-      karma: 6.4.4
+      karma: 6.4.4(debug@4.4.3)
 
   karma-source-map-support@1.4.0:
     dependencies:
       source-map-support: 0.5.21
 
-  karma@6.4.4:
+  karma@6.4.4(debug@4.4.3):
     dependencies:
       '@colors/colors': 1.5.0
       body-parser: 1.20.5

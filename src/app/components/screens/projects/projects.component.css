@@ -9,12 +9,21 @@ section {
   }
 }
 
-section h2 {
+#projects h2 {
   text-align: center;
   color: rgb(153, 255, 0);
-  margin: 20px 0;
-  font-size: 35px;
+  font-weight: 900;
+  font-size: 2rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
 }
+
+#projects h2 .prompt-mark {
+  color: rgba(153, 255, 0, 0.5);
+  margin-right: 6px;
+}
+
 
 section .list {
   display: flex;

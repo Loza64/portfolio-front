@@ -1,10 +1,20 @@
-<article #article>
-  <div class="circle-container">
+<article class="circle-progress" #article>
+  <div class="ring">
     <svg viewBox="0 0 100 100">
-      <circle class="circle" [ngStyle]="{'--percentage': skill.percentage}" />
-      <text x="52%" y="54%" text-anchor="middle" dominant-baseline="middle">
-        {{ skill.percentage }}%
-      </text>
+      <circle class="ring__track" cx="50" cy="50" r="38" />
+      <circle
+        class="circle"
+        cx="50"
+        cy="50"
+        r="40"
+        [ngStyle]="{ '--percentage': skill.percentage }"
+        role="progressbar"
+        [attr.aria-valuenow]="skill.percentage"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [attr.aria-label]="skill.name"
+      />
+      <text x="52%" y="54%" text-anchor="middle" dominant-baseline="middle">{{ skill.percentage }}%</text>
     </svg>
   </div>
   <span>{{ skill.name }}</span>
