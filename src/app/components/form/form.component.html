@@ -1,18 +1,77 @@
 <form #form [formGroup]="fg" (ngSubmit)="onSubmit()" class="form">
-    <div>
-        <input autocomplete="off" type="text" formControlName="firstname" placeholder="nombre" id="firtsname"
-            [class.error]="!fg.get('firstname')?.valid && fg.get('firstname')?.touched">
-        <input autocomplete="off" type="text" formControlName="lastname" placeholder="apellido" id="lastname"
-            [class.error]="!fg.get('lastname')?.valid && fg.get('lastname')?.touched">
+  <div class="form__titlebar">
+    <div class="form__dots" aria-hidden="true">
+      <span class="dot dot--red"></span>
+      <span class="dot dot--yellow"></span>
+      <span class="dot dot--green"></span>
     </div>
-    <div>
-        <input autocomplete="off" type="email" formControlName="email" placeholder="correo" id="email"
-            [class.error]="!fg.get('email')?.valid && fg.get('email')?.touched">
-        <input autocomplete="off" type="text" formControlName="phone" placeholder="teléfono" id="phone"
-            [class.error]="!fg.get('phone')?.valid && fg.get('phone')?.touched">
-    </div>
-    <textarea formControlName="message" id="message" placeholder="mensaje" rows="10"
-        [class.error]="!fg.get('message')?.valid && fg.get('message')?.touched"></textarea>
+    <span class="form__filename">contact-message.ts</span>
+  </div>
 
-    <input type="submit" class="loading" [value]="submitButtonText" id="send" [disabled]="isLoading">
+  <div class="form__body">
+    <div class="form__row">
+      <div class="field">
+        <label for="firstName">firstName<span class="colon">:</span></label>
+        <input autocomplete="off" type="text" formControlName="firstName" placeholder="Roberto" id="firstName"
+          [class.error]="hasError('firstName')" [attr.aria-invalid]="hasError('firstName')"
+          aria-describedby="firstName-error" />
+        <span class="field__error" id="firstName-error" role="alert" *ngIf="hasError('firstName')">
+          {{ getErrorMessage('firstName') }}
+        </span>
+      </div>
+
+      <div class="field">
+        <label for="lastName">lastName<span class="colon">:</span></label>
+        <input autocomplete="off" type="text" formControlName="lastName" placeholder="Loza" id="lastName"
+          [class.error]="hasError('lastName')" [attr.aria-invalid]="hasError('lastName')"
+          aria-describedby="lastName-error" />
+        <span class="field__error" id="lastName-error" role="alert" *ngIf="hasError('lastName')">
+          {{ getErrorMessage('lastName') }}
+        </span>
+      </div>
+    </div>
+
+    <div class="form__row">
+      <div class="field">
+        <label for="email">email<span class="colon">:</span></label>
+        <input autocomplete="off" type="email" formControlName="email" placeholder="tu@correo.com" id="email"
+          [class.error]="hasError('email')" [attr.aria-invalid]="hasError('email')" aria-describedby="email-error" />
+        <span class="field__error" id="email-error" role="alert" *ngIf="hasError('email')">
+          {{ getErrorMessage('email') }}
+        </span>
+      </div>
+
+      <div class="field">
+        <label for="phone">phone<span class="colon">:</span></label>
+        <input autocomplete="off" type="text" formControlName="phone" placeholder="+503 0000 0000" id="phone"
+          [class.error]="hasError('phone')" [attr.aria-invalid]="hasError('phone')" aria-describedby="phone-error" />
+        <span class="field__error" id="phone-error" role="alert" *ngIf="hasError('phone')">
+          {{ getErrorMessage('phone') }}
+        </span>
+      </div>
+    </div>
+
+    <div class="field field--full">
+      <label for="message">message<span class="colon">:</span></label>
+      <textarea formControlName="message" id="message" placeholder="Contame sobre tu proyecto..." rows="6"
+        [class.error]="hasError('message')" [attr.aria-invalid]="hasError('message')"
+        aria-describedby="message-error"></textarea>
+      <span class="field__error" id="message-error" role="alert" *ngIf="hasError('message')">
+        {{ getErrorMessage('message') }}
+      </span>
+    </div>
+
+    <button type="submit" class="form__submit" [disabled]="isLoading()">
+      <span class="form__spinner" *ngIf="isLoading()" aria-hidden="true"></span>
+      <span>{{ isLoading() ? submitButtonText : '$ ' + submitButtonText }}</span>
+    </button>
+  </div>
+
+  <div class="form__statusbar">
+    <span class="form__branch"><i class="fa-solid fa-code-branch" aria-hidden="true"></i> main</span>
+    <span class="form__diagnostics" [class.form__diagnostics--clean]="errorCount === 0">
+      <span class="form__diagnostics-dot"></span>
+      {{ errorCount === 0 ? '0 errors' : errorCount + ' error' + (errorCount === 1 ? '' : 's') }}
+    </span>
+  </div>
 </form>

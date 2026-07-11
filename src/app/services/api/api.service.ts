@@ -11,8 +11,6 @@ export class ApiService {
 
   private readonly noCacheHeaders = new HttpHeaders({
     'Cache-Control': 'no-cache, no-store, must-revalidate',
-    'Pragma': 'no-cache',
-    'Expires': '0'
   });
 
   constructor(private http: HttpClient) { }
@@ -25,7 +23,7 @@ export class ApiService {
 
   private post<T>(url: string, body: unknown): Observable<T> {
     return this.http
-      .post<T>(`${this.domain}/${url}`, body, { headers: this.noCacheHeaders })
+      .post<T>(`${this.domain}/${url}`, body)
       .pipe(catchError(this.handleError));
   }
 

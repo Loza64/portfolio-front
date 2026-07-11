@@ -22,7 +22,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.api.getProjects().subscribe((data: Project[]) => {
-      this.projects = data
+      this.projects = data.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
     });
   }
 

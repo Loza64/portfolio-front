@@ -52,7 +52,7 @@ export interface About {
 export interface Message {
   id: string
   name: string,
-  lastname: string,
+  lastName: string,
   phone: string,
   email: string,
   message: string
