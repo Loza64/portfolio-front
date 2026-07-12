@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://loza-portfolio-back.koyeb.app'
+  apiUrl: 'https://loza-portfolio-backend.koyeb.app'
 };
