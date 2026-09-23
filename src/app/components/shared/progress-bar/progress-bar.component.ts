@@ -23,15 +23,11 @@ export class ProgressBarComponent implements AfterViewInit, OnDestroy {
     el.addEventListener('intersect', () => {
       el.style.opacity = '1';
       el.style.transform = 'translateY(0)';
-      const bar = el.querySelector('.bar') as HTMLElement;
-      if (bar) bar.style.width = `${bar.dataset['percentage']}%`;
     });
 
     el.addEventListener('notintersect', () => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(50px)';
-      const bar = el.querySelector('.bar') as HTMLElement;
-      if (bar) bar.style.width = '0%';
     });
   }
 

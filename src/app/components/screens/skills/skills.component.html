@@ -1,20 +1,33 @@
-<section id="skills" #skills>
-  <h2>Habilidades</h2>
-  <div class="skills">
+<section id="skills" #skills class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Habilidades</h2>
+      <p class="section-lead">// Tecnologías con las que trabajo y lo que aporto al equipo</p>
+    </div>
+
     <div class="technicals">
-      <h3>Tecnicos</h3>
-      <div class="options">
-        <button (click)="filter = 'backend'" [class.active]="filter === 'backend'">Backend</button>
-        <button (click)="filter = 'frontend'" [class.active]="filter === 'frontend'">Frontend</button>
-        <button (click)="filter = 'database'" [class.active]="filter === 'database'">Database</button>
-        <button (click)="filter = 'others'" [class.active]="filter === 'others'">Otros</button>
+      <div class="group-head">
+        <h3>Técnicas</h3>
+        <div class="options" role="group" aria-label="Filtrar habilidades técnicas por categoría">
+          <button type="button" (click)="filter = 'backend'" [class.active]="filter === 'backend'"
+            [attr.aria-pressed]="filter === 'backend'">Backend</button>
+          <button type="button" (click)="filter = 'frontend'" [class.active]="filter === 'frontend'"
+            [attr.aria-pressed]="filter === 'frontend'">Frontend</button>
+          <button type="button" (click)="filter = 'database'" [class.active]="filter === 'database'"
+            [attr.aria-pressed]="filter === 'database'">Base de datos</button>
+          <button type="button" (click)="filter = 'others'" [class.active]="filter === 'others'"
+            [attr.aria-pressed]="filter === 'others'">Otros</button>
+        </div>
       </div>
       <div class="list">
         <app-progress-bar *ngFor="let skill of getTechnicalList()" [skill]="skill" />
       </div>
     </div>
+
     <div class="professional">
-      <h3>Profesionales</h3>
+      <div class="group-head">
+        <h3>Profesionales</h3>
+      </div>
       <div class="list">
         <app-tag *ngFor="let skill of getProfessionalList()" [item]="skill" />
       </div>

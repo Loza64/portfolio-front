@@ -1,148 +1,86 @@
-section {
-  margin: 30px 75px;
+:host {
+  display: block;
 }
 
-@media screen and (max-width: 475px) {
-  section {
-    margin: 30px 10px;
-  }
-}
-
-section h2 {
-  text-align: center;
-  color: white;
-  font-weight: 900;
-  font-size: 2.3rem;
-  margin-top: 30px;
-}
-
-section .skills {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  gap: 1.5rem;
-}
-
-@media screen and (max-width: 595px) {
-  section .skills {
-    padding: 0;
-  }
-}
-
-@media screen and (max-width: 860px) {
-  section .skills {
-    flex-direction: column;
-  }
-}
-
-section .skills .technicals {
+.technicals,
+.professional {
   width: 100%;
 }
 
-@media screen and (max-width: 600px) {
-  section .skills {
-    padding: 0 15px;
-  }
+.professional {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
 }
 
-section .skills .technicals .options {
+.group-head {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-section .skills .technicals .options button {
-  padding: 0.7rem 1em;
-  border: none;
-  border-radius: 5px;
-  background-color: #252525;
-  color: white;
-  font-size: 1rem;
-  font-weight: 900;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-section .skills .technicals .options button:hover {
-  box-shadow: 4px 4px 4px rgb(153, 255, 0);
-}
-
-section .skills .technicals .options button.active {
-  background-color: rgb(153, 255, 0);
-  color: #1e1e1e;
-  box-shadow: 4px 4px 4px rgb(153, 255, 0);
-}
-
-@media only screen and (max-width:470px) {
-  section .skills .technicals .options button {
-    font-size: .8rem;
-    padding: .5rem;
-  }
-
-}
-
-section .skills .technicals h3,
-.skills .professional h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 10px 0;
-  text-align: center;
-  color: rgb(153, 255, 0);
-  font-weight: 900;
-}
-
-section .skills .technicals .list {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-@media (max-width: 768px) {
-  section .skills .technicals .list {
-    grid-template-columns: 1fr;
-  }
-}
-
-/*------------------------------------ Professionals skills */
-section .skills .professional {
-  width: 100%;
-}
-
-section .skills .professional .list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  gap: 14px;
-  padding: 10px 20px;
-  width: 100%;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
 }
 
-@media screen and (max-width: 1650px) {
-  section .skills .professional .list {
-    grid-template-columns: repeat(auto-fill, minmax(9rem, 3fr));
+.group-head h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-strong);
+}
+
+/* Filtro tipo control segmentado */
+.options {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 4px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.options button {
+  padding: 0.45rem 0.95rem;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.options button:hover {
+  color: var(--text-strong);
+}
+
+.options button.active {
+  color: var(--blue);
+  background: var(--blue-soft);
+  border-color: var(--blue-line);
+}
+
+@media (max-width: 480px) {
+  .options button {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
   }
 }
 
-@media screen and (max-width: 438px) {
-  section .skills .professional .list {
-    grid-template-columns: repeat(auto-fill, minmax(5.9rem, 3fr));
-    gap: 10px;
-  }
+.technicals .list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr));
+  gap: 1rem;
+  min-height: 8rem;
+  align-content: start;
 }
 
-@media only screen and (max-width : 875px) {
-  section .skills .professional .list {
-    padding: 20px 0px;
-    width: 100%;
-  }
-}
-
-@media only screen and (max-width:400px) {
-  section .skills .professional .list article {
-    gap: 0px;
-  }
+.professional .list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }

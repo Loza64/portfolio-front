@@ -1,37 +1,70 @@
-<header id="home" #header>
-  <div class="content">
-    <h1>
-      ¡Hola! , soy
-      <span>Roberto Loza</span>,
-      Desarrollador Full Stack, apasionado por crear soluciones de alto impacto.
-    </h1>
-    <p>
-      Soy un profesional en la creación de aplicaciones de alto impacto, abarcando todo el desarrollo, desde el
-      diseño hasta la implementación backend. Me enfoco en la colaboración y la integridad del proyecto,
-      utilizando herramientas efectivas para lograr resultados óptimos.
-      <span class="cursor"></span>
-    </p>
-    <div class="social">
-      <a class="media" href="https://api.whatsapp.com/send?phone=50376263182&app=facebook&entry_point=page_cta"
-        target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-      </a>
-      <a class="media" href="https://www.linkedin.com/in/roberto-loza-257542221/" target="_blank">
-        <i class="fa-brands fa-linkedin"></i>
-      </a>
-      <a class="media" href="https://github.com/Loza64" target="_blank">
-        <i class="fa-brands fa-github"></i>
-      </a>
+<header id="home" #header class="hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <div class="who">
+        <img class="who__photo" src="https://res.cloudinary.com/loza-dev/image/upload/v1783793499/me_c90fxt.jpg"
+          alt="Roberto Loza" width="52" height="52">
+        <div class="who__text">
+          <strong>Roberto Loza</strong>
+          <span>Desarrollador Full Stack · El Salvador</span>
+        </div>
+        <span class="status"><i class="status__dot" aria-hidden="true"></i>Disponible para proyectos</span>
+      </div>
+
+      <h1>
+        <span>Construyo aplicaciones completas,</span>
+        <span class="muted">del diseño al backend.</span>
+      </h1>
+
+      <p class="lead">
+        Diseño, desarrollo y despliego soluciones de alto impacto con arquitectura limpia y herramientas efectivas.
+        Trabajo en equipo y cuido la integridad del proyecto de principio a fin.
+      </p>
+
+      <div class="actions">
+        <a class="btn btn--primary" href="#projects">Ver proyectos</a>
+        <a class="btn" href="https://drive.google.com/file/d/1jONWjfq6KwHxxHhEy5-dUfIk8zEFExi_/view?usp=sharing"
+          target="_blank" rel="noopener noreferrer">Ver currículum</a>
+
+        <span class="social">
+          <a href="https://github.com/Loza64" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/roberto-loza-257542221/" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=50376263182&app=facebook&entry_point=page_cta" target="_blank"
+            rel="noopener noreferrer" aria-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </span>
+      </div>
     </div>
-    <a class="cv" href="https://drive.google.com/file/d/1jONWjfq6KwHxxHhEy5-dUfIk8zEFExi_/view?usp=sharing"
-      target="_blank">
-      Ver Resumen
-    </a>
-  </div>
-  <div class="img-container">
-    <div class="border-green">
-      <div class="border-white">
-        <img src="https://res.cloudinary.com/loza-dev/image/upload/v1783793499/me_c90fxt.jpg" alt="Roberto Loza">
+
+    <div class="editor" role="img" aria-label="Fragmento de código que resume el perfil de Roberto Loza">
+      <div class="editor__bar" aria-hidden="true">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span class="tab">developer.ts</span>
+      </div>
+
+      <div class="editor__code" aria-hidden="true">
+        <div class="line" style="--n:24;--d:.5s"><span class="k">const</span> dev<span class="o">:</span>&ngsp;<span class="t">Developer</span>&ngsp;<span class="o">=</span> {{ '{' }}</div>
+        <div class="line" style="--n:23;--d:1.03s">&nbsp;&nbsp;<span class="p">name</span>: <span class="s">"Roberto Loza"</span>,</div>
+        <div class="line" style="--n:21;--d:1.54s">&nbsp;&nbsp;<span class="p">role</span>: <span class="s">"Full Stack"</span>,</div>
+        <div class="line" style="--n:35;--d:2s">&nbsp;&nbsp;<span class="p">backend</span>: [<span class="s">"Java"</span>, <span class="s">"Spring Boot"</span>],</div>
+        <div class="line" style="--n:33;--d:2.77s">&nbsp;&nbsp;<span class="p">frontend</span>: [<span class="s">"Angular"</span>, <span class="s">"React"</span>],</div>
+        <div class="line" style="--n:31;--d:3.5s">&nbsp;&nbsp;<span class="p">api</span>: [<span class="s">"REST"</span>, <span class="s">"JWT"</span>, <span class="s">"RBAC"</span>],</div>
+        <div class="line" style="--n:18;--d:4.18s">&nbsp;&nbsp;<span class="p">available</span>: <span class="b">true</span>,</div>
+        <div class="line" style="--n:8;--d:4.58s">{{ '};' }}</div>
+        <div class="line line--caret" style="--n:1;--d:4.7s"><span class="caret"></span></div>
+      </div>
+
+      <div class="editor__status" aria-hidden="true">
+        <span><i class="fa-solid fa-code-branch"></i> main</span>
+        <span>TypeScript</span>
       </div>
     </div>
   </div>

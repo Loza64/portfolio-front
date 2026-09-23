@@ -1,26 +1,15 @@
-<section class="services" id="services" #section>
-  <h2><span class="prompt-mark">&gt;_</span> Mis servicios</h2>
-  <div class="list">
-    <article *ngFor="let item of listService; let i = index" #article>
-      <header class="card-top">
-        <span class="traffic">
-          <i class="dot dot-a"></i>
-          <i class="dot dot-b"></i>
-          <i class="dot dot-c"></i>
-        </span>
-        <span class="file-name">service-{{ (i + 1) < 10 ? '0' + (i + 1) : (i + 1) }}.ts</span>
-      </header>
+<section class="services section" id="services" #section>
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Servicios</h2>
+      <p class="section-lead">// Lo que puedo construir para tu negocio o tu equipo</p>
+    </div>
 
-      <div class="card-body">
-        <div class="icon-box">
-          <i [ngClass]="item.icon"></i>
-        </div>
-
-        <p class="code-line">
-          <span class="fn">{{ item.title }}</span><span class="kw">()</span>
-          <span class="brace">{{ '{ }' }}</span>
-        </p>
-      </div>
-    </article>
+    <div class="list">
+      <article *ngFor="let item of listService" #article>
+        <span class="icon-box"><i [ngClass]="item.icon" aria-hidden="true"></i></span>
+        <h3>{{ item.title }}</h3>
+      </article>
+    </div>
   </div>
 </section>

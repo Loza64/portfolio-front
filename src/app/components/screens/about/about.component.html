@@ -1,24 +1,44 @@
-<section id="about" #section>
-  <div class="section-header">
-    <span class="eyebrow">Mi trayectoria</span>
-    <h2>Experiencia</h2>
-  </div>
+<section id="about" #section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Experiencia</h2>
+      <p class="section-lead">// Trabajo profesional, comercial y voluntario</p>
+    </div>
 
-  <div class="timeline-grid">
-    <article #article *ngFor="let item of about; let i = index" class="timeline-card">
-      <div class="card-top">
-        <mat-icon class="icon">{{ getIcon(item.title) }}</mat-icon>
-        <span class="date-badge">{{ item.date | date: 'MMM yyyy' }}</span>
-      </div>
+    <div class="timeline" [class.reveal-ready]="isBrowser">
+      @for (item of visibleItems(); track item.id) {
+        <article #article class="entry" [class.is-open]="isExpanded(item.id)">
+          <time class="entry__date" [attr.datetime]="item.date">{{ formatDate(item.date) }}</time>
 
-      <div class="content">
-        <h3>{{ item.title }}</h3>
-        <p [class.clamped]="!isExpanded(i)">{{ item.description }}</p>
+          <mat-icon class="icon" aria-hidden="true">{{ getIcon(item.title) }}</mat-icon>
 
-        <button *ngIf="needsToggle(item.description)" type="button" class="toggle-btn" (click)="toggleExpand(i)">
-          {{ isExpanded(i) ? 'Ver menos' : 'Ver más' }}
+          <div class="content">
+            <h3>{{ item.title }}</h3>
+
+            <div #desc class="desc" [id]="'desc-' + item.id" [attr.data-id]="item.id"
+              [class.is-open]="isExpanded(item.id)" [class.is-collapsible]="isCollapsible(item.id)">
+              <p>{{ item.description }}</p>
+            </div>
+
+            @if (isCollapsible(item.id)) {
+              <button type="button" class="toggle-btn" (click)="toggleExpand(item.id, desc, article)"
+                [attr.aria-expanded]="isExpanded(item.id)" [attr.aria-controls]="'desc-' + item.id">
+                <span>{{ isExpanded(item.id) ? 'Ver menos' : 'Ver más' }}</span>
+                <mat-icon aria-hidden="true">expand_more</mat-icon>
+              </button>
+            }
+          </div>
+        </article>
+      }
+    </div>
+
+    @if (hasMore()) {
+      <div class="more">
+        <button type="button" class="more__btn" (click)="toggleList()" [attr.aria-expanded]="listExpanded()">
+          <span>{{ listExpanded() ? 'Ver menos experiencias' : 'Ver experiencia anterior · ' + hiddenCount() }}</span>
+          <mat-icon aria-hidden="true">{{ listExpanded() ? 'expand_less' : 'expand_more' }}</mat-icon>
         </button>
       </div>
-    </article>
+    }
   </div>
 </section>

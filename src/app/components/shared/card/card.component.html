@@ -1,4 +1,4 @@
-<article class="card" #article tabindex="0">
+<article class="card" #article>
   <div class="card__titlebar">
     <div class="card__dots" aria-hidden="true">
       <span class="dot dot--red"></span>
@@ -8,43 +8,25 @@
     <span class="card__filename">{{ fileName }}</span>
   </div>
 
-  <div class="card__viewport">
+  <div class="card__media">
     <img [src]="project.image.url" [alt]="project.title" loading="lazy" class="card__image" />
-    <div class="card__scanline" aria-hidden="true"></div>
-
-    <div class="card__overlay">
-      <h3 class="card__title">{{ project.title }}</h3>
-      <p class="card__comment">// {{ project.description }}</p>
-
-      <div class="card__actions" *ngIf="project.links.github || project.links.app">
-        <a
-          *ngIf="project.links.github"
-          class="card__cmd"
-          [href]="project.links.github"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Ver código fuente en GitHub"
-        >
-          <i class="fa-brands fa-github" aria-hidden="true"></i>
-          <span>git clone</span>
-        </a>
-        <a
-          *ngIf="project.links.app"
-          class="card__cmd card__cmd--accent"
-          [href]="project.links.app"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Ver demo en vivo"
-        >
-          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-          <span>./run --demo</span>
-        </a>
-      </div>
-    </div>
   </div>
 
-  <div class="card__statusbar">
-    <span class="card__branch"><i class="fa-solid fa-code-branch" aria-hidden="true"></i> main</span>
-    <span class="card__status"><span class="card__status-dot"></span> ready</span>
+  <div class="card__body">
+    <h3 class="card__title">{{ project.title }}</h3>
+    <p class="card__desc">{{ project.description }}</p>
+
+    <div class="card__actions" *ngIf="project.links.github || project.links.app">
+      <a *ngIf="project.links.github" class="card__cmd" [href]="project.links.github" target="_blank"
+        rel="noopener noreferrer" [attr.aria-label]="'Ver código fuente de ' + project.title">
+        <i class="fa-brands fa-github" aria-hidden="true"></i>
+        <span>Código</span>
+      </a>
+      <a *ngIf="project.links.app" class="card__cmd card__cmd--accent" [href]="project.links.app" target="_blank"
+        rel="noopener noreferrer" [attr.aria-label]="'Ver demo de ' + project.title">
+        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        <span>Ver demo</span>
+      </a>
+    </div>
   </div>
 </article>

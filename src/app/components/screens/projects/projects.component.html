@@ -1,6 +1,12 @@
-<section #section id="projects">
-  <h2><span class="prompt-mark">&gt;_</span> Proyectos desarrollados</h2>
-  <div class="list">
-    <app-card *ngFor="let project of projects" [project]="project" />
+<section #section id="projects" class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Proyectos</h2>
+      <p class="section-lead">// Aplicaciones reales, con código y demo cuando están disponibles</p>
+    </div>
+
+    <div class="list">
+      <app-card *ngFor="let project of projects" [project]="project" />
+    </div>
   </div>
 </section>

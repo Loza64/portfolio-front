@@ -1,170 +1,243 @@
-section {
-    margin: 60px 0;
-    padding: 0 20px;
+:host {
+  display: block;
 }
 
-/* ---------- Encabezado ---------- */
-
-section .section-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 2.5rem;
+/* Línea de tiempo: el orden importa (más reciente primero) */
+.timeline {
+  --date-col: 7.5rem;
+  --node: 2.5rem;
+  --gap: 1.25rem;
 }
 
-section .eyebrow {
-    color: rgb(128, 255, 0);
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    opacity: 0.85;
-    margin-bottom: 6px;
+.entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--date-col) var(--node) minmax(0, 1fr);
+  grid-template-areas: 'date node body';
+  column-gap: var(--gap);
+  padding-bottom: 1.5rem;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-section h2 {
-    font-size: 2.2rem;
-    margin: 0;
-    color: white;
-    position: relative;
-    padding-bottom: 14px;
+/* Aparición al hacer scroll. Solo se oculta cuando el navegador ya puede
+   volver a mostrarla (así nunca queda contenido invisible sin JS). */
+.reveal-ready .entry:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(18px);
 }
 
-section h2::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70px;
-    height: 4px;
-    border-radius: 4px;
-    background: rgb(128, 255, 0);
-    box-shadow: 0 0 12px rgb(128, 255, 0);
+/* Hilo que une los nodos */
+.entry::before {
+  content: '';
+  position: absolute;
+  top: var(--node);
+  bottom: 0;
+  left: calc(var(--date-col) + var(--gap) + var(--node) / 2 - 0.5px);
+  width: 1px;
+  background: var(--border);
 }
 
-@media (max-width: 600px) {
-    section h2 {
-        font-size: 1.7rem;
-    }
+.entry:last-child {
+  padding-bottom: 0;
 }
 
-/* ---------- Grid de tarjetas ---------- */
-
-section .timeline-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 28px;
-    max-width: 1200px;
-    margin: 0 auto;
+.entry:last-child::before {
+  display: none;
 }
 
-section .timeline-card {
-    position: relative;
-    background: linear-gradient(160deg, rgba(20, 20, 20, 0.95), rgba(0, 0, 0, 0.95));
-    border: 1px solid rgba(128, 255, 0, 0.25);
-    border-radius: 16px;
-    padding: 22px;
-    overflow: hidden;
-    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+.entry__date {
+  grid-area: date;
+  padding-top: 0.6rem;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+  white-space: nowrap;
 }
 
-section .timeline-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    height: 3px;
-    background: linear-gradient(90deg, rgb(128, 255, 0), transparent 80%);
+.entry .icon {
+  grid-area: node;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--node);
+  height: var(--node);
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--blue);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  z-index: 1;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-section .timeline-card:hover {
-    transform: translateY(-8px);
-    border-color: rgb(128, 255, 0);
-    box-shadow: 0 10px 30px -8px rgba(128, 255, 0, 0.45);
+.entry:hover .icon,
+.entry.is-open .icon {
+  border-color: var(--blue-line);
+  background: var(--blue-soft);
 }
 
-/* ---------- Cabecera de la tarjeta: icono + fecha ---------- */
-
-section .timeline-card .card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 14px;
+.content {
+  grid-area: body;
+  min-width: 0;
+  padding: 1.1rem 1.25rem 1rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.3s ease;
 }
 
-section .timeline-card .icon {
-    color: black;
-    background-color: rgb(128, 255, 0);
-    font-size: 1.4rem;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    border-radius: 100%;
-    box-shadow: 0 0 10px 2px rgba(128, 255, 0, 0.5);
-    flex-shrink: 0;
+.entry:hover .content,
+.entry.is-open .content {
+  border-color: var(--border-hover);
 }
 
-section .timeline-card .date-badge {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: rgb(128, 255, 0);
-    background: rgba(128, 255, 0, 0.12);
-    border: 1px solid rgba(128, 255, 0, 0.35);
-    padding: 5px 12px;
-    border-radius: 999px;
-    white-space: nowrap;
+.content h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--text-strong);
 }
 
-/* ---------- Contenido ---------- */
-
-section .timeline-card .content h3 {
-    font-size: 1rem;
-    line-height: 1.35;
-    color: white;
-    margin: 0 0 10px;
+/* Descripción: siempre limitada a 3 líneas; se abre con "Ver más".
+   El max-height es múltiplo exacto del line-height, así nunca se corta a media línea. */
+.desc {
+  --lines: 3;
+  position: relative;
+  overflow: hidden;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: var(--muted);
+  max-height: calc(var(--lines) * 1.65em);
+  transition: max-height 0.35s ease;
 }
 
-section .timeline-card .content p {
-    font-size: 0.92rem;
-    line-height: 1.55;
-    color: rgba(255, 255, 255, 0.75);
+.desc.is-open {
+  max-height: var(--full-h, none);
+}
+
+.desc p {
+  margin: 0;
+  white-space: pre-line; /* respeta los saltos de línea que vengan en el texto */
+  overflow-wrap: anywhere;
+}
+
+/* Degradado que insinúa que hay más texto */
+.desc::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 2.4em;
+  background: linear-gradient(to bottom, transparent, var(--bg-raised));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.desc.is-collapsible:not(.is-open)::after {
+  opacity: 1;
+}
+
+.toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin: 0.45rem 0 0 -0.55rem; /* compensa el padding para alinear con el texto */
+  padding: 0.4rem 0.55rem;
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--blue);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background: var(--blue-soft);
+}
+
+.toggle-btn mat-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  font-size: 1.15rem;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.entry.is-open .toggle-btn mat-icon {
+  transform: rotate(180deg);
+}
+
+/* Botón de toda la lista */
+.more {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.more__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.2rem 0.7rem 1.4rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-strong);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.more__btn:hover {
+  border-color: var(--blue-line);
+  color: var(--blue);
+  background: var(--blue-soft);
+}
+
+.more__btn mat-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+@media (max-width: 640px) {
+  .timeline {
+    --gap: 1rem;
+  }
+
+  .entry {
+    grid-template-columns: var(--node) minmax(0, 1fr);
+    grid-template-areas:
+      'node date'
+      'node body';
+  }
+
+  .entry::before {
+    left: calc(var(--node) / 2 - 0.5px);
+  }
+
+  .entry__date {
+    padding: 0 0 0.5rem;
     text-align: left;
-    margin: 0;
-}
+    align-self: center;
+  }
 
-section .timeline-card .content p.clamped {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
+  .content {
+    padding: 1rem;
+  }
 
-section .timeline-card .toggle-btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 0;
-    background: none;
-    border: none;
-    color: rgb(128, 255, 0);
-    font-size: 0.85rem;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-section .timeline-card .toggle-btn:hover {
-    text-decoration: underline;
-}
-
-@media (max-width: 490px) {
-    section .timeline-card .content h3 {
-        font-size: 1rem;
-    }
-
-    section .timeline-card .content p {
-        font-size: 0.85rem;
-    }
+  .more__btn {
+    width: 100%;
+    justify-content: center;
+  }
 }

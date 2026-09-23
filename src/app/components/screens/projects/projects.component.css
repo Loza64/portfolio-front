@@ -1,41 +1,10 @@
-section {
-  padding: 10px;
-  margin: 30px 55px;
+:host {
+  display: block;
 }
 
-@media (max-width: 470px) {
-  section {
-    margin: 35px 10px;
-  }
-}
-
-#projects h2 {
-  text-align: center;
-  color: rgb(153, 255, 0);
-  font-weight: 900;
-  font-size: 2rem;
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: -0.02em;
-  margin-bottom: 40px;
-}
-
-#projects h2 .prompt-mark {
-  color: rgba(153, 255, 0, 0.5);
-  margin-right: 6px;
-}
-
-
-section .list {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 30px 40px;
-}
-
-@media (max-width: 990px) {
-  section .list {
-    gap: 20px;
-  }
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
 }

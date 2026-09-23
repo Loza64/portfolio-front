@@ -1,4 +1,5 @@
 :host {
+  display: block;
   --bg-primary: #0d1117;
   --bg-panel: #161b22;
   --bg-field: #0d1117;
@@ -101,10 +102,9 @@
 }
 
 .field label {
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 500;
   color: var(--text-muted);
-  letter-spacing: 0.02em;
 }
 
 .field label .colon {

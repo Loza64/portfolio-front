@@ -39,7 +39,7 @@ export class SourceList {
     },
     {
       "icon": 'fa-solid fa-vial',
-      "title": 'pruebasUnitarias',
+      "title": 'Pruebas unitarias',
     }
   ]
 
