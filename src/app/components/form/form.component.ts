@@ -1,16 +1,16 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ApiService } from '../../services/api/api.service';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { finalize } from 'rxjs';
+import { ApiService } from '../../services/api/api.service';
+
+const DEFAULT_ERROR = 'Ocurrió un error inesperado';
+const NAME_PATTERN = /^(?! )[A-Za-zÀ-ÿ]+( [A-Za-zÀ-ÿ]+)*$/;
 
 @Component({
   selector: 'app-form',
-  imports: [
-    CommonModule,
-    MatSnackBarModule,
-    ReactiveFormsModule,
-  ],
+  imports: [CommonModule, MatSnackBarModule, ReactiveFormsModule],
   templateUrl: './form.component.html',
   styleUrl: './form.component.css',
   standalone: true,
@@ -18,8 +18,33 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 })
 export class FormComponent {
 
-  fg: FormGroup;
-  isLoading = signal(false);
+  private readonly fb = inject(FormBuilder);
+  private readonly api = inject(ApiService);
+  private readonly snackbar = inject(MatSnackBar);
+
+  readonly isLoading = signal(false);
+
+  readonly fg = this.fb.group({
+    firstName: ['', [Validators.required, Validators.minLength(2), Validators.pattern(NAME_PATTERN)]],
+    lastName: ['', [Validators.required, Validators.minLength(2), Validators.pattern(NAME_PATTERN)]],
+    email: [
+      '',
+      [
+        Validators.required,
+        Validators.email,
+        Validators.pattern(/^\w+([._+-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/),
+      ],
+    ],
+    phone: ['', [Validators.required, Validators.pattern(/^\+?[1-9]\d{1,14}([ -]?[\d()]+)*$/)]],
+    message: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(20),
+        Validators.pattern(/^[a-zA-ZÁ-ÿ0-9\s.,()-]+$/),
+      ],
+    ],
+  });
 
   private readonly errorMessages: Record<string, Record<string, string>> = {
     firstName: {
@@ -48,102 +73,12 @@ export class FormComponent {
     },
   };
 
-  constructor(
-    private fb: FormBuilder,
-    private api: ApiService,
-    private snackbar: MatSnackBar,
-  ) {
-    this.fg = this.fb.group({
-      firstName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.pattern(/^(?! )[A-Za-zÀ-ÿ]+( [A-Za-zÀ-ÿ]+)*$/)
-        ]
-      ],
-      lastName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.pattern(/^(?! )[A-Za-zÀ-ÿ]+( [A-Za-zÀ-ÿ]+)*$/)
-        ]
-      ],
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.email,
-          Validators.pattern(/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/)
-        ]
-      ],
-      phone: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(/^\+?[1-9]\d{1,14}([ -]?[\d()]+)*$/)
-        ]
-      ],
-      message: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(20),
-          Validators.pattern(/^[a-zA-ZÁ-ÿ0-9\s.,()-]+$/)
-        ]
-      ],
-    });
-  }
-
-  private success() {
-    this.snackbar.open('Message sent successfully', '', {
-      duration: 5000,
-      panelClass: ['snackbar-success'],
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-    });
-  }
-
-  private error(data: string) {
-    this.snackbar.open(data, '', {
-      duration: 5000,
-      panelClass: ['snackbar-error'],
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-    });
-  }
-
-  private handleValidationError() {
-    this.fg.markAllAsTouched();
-    this.error("Por favor, completa todos los campos correctamente");
-  }
-
-  private handleApiResponse(res: any) {
-    if (res.state) {
-      this.success();
-    } else {
-      this.error(res.message);
-    }
-    this.isLoading.set(false);
-    this.fg.reset();
-  }
-
-  private handleErrorResponse(err: any) {
-    console.error(err);
-    const errorMessage = err?.response?.message || "Ocurrió un error inesperado";
-    this.error(errorMessage);
-    this.isLoading.set(false);
-  }
-
   get submitButtonText(): string {
     return this.isLoading() ? 'Enviando...' : 'Enviar mensaje';
   }
 
   get errorCount(): number {
-    return Object.values(this.fg.controls)
-      .filter((control) => control.invalid && control.touched)
-      .length;
+    return Object.values(this.fg.controls).filter((control) => control.invalid && control.touched).length;
   }
 
   hasError(controlName: string): boolean {
@@ -152,25 +87,43 @@ export class FormComponent {
   }
 
   getErrorMessage(controlName: string): string {
-    const control = this.fg.get(controlName);
-    if (!control || !control.errors) return '';
-    const firstErrorKey = Object.keys(control.errors)[0];
+    const errors = this.fg.get(controlName)?.errors;
+    if (!errors) return '';
+    const firstErrorKey = Object.keys(errors)[0];
     return this.errorMessages[controlName]?.[firstErrorKey] ?? 'Valor inválido';
   }
 
-  onSubmit() {
-    this.isLoading.set(true);
+  onSubmit(): void {
+    if (this.isLoading()) return;
 
     if (this.fg.invalid) {
-      this.isLoading.set(false);
-      this.handleValidationError();
+      this.fg.markAllAsTouched();
+      this.notify('Por favor, completa todos los campos correctamente', 'snackbar-error');
       return;
     }
 
-    this.api.newMessage(this.fg.value).subscribe({
-      next: (res) => this.handleApiResponse(res),
-      error: (err) => this.handleErrorResponse(err)
-    });
+    this.isLoading.set(true);
+
+    this.api.newMessage(this.fg.getRawValue() as never)
+      .pipe(finalize(() => this.isLoading.set(false)))
+      .subscribe({
+        next: () => {
+          this.notify('Mensaje enviado correctamente', 'snackbar-success');
+          this.fg.reset();
+        },
+        error: (err: Error) => {
+          console.error(err);
+          this.notify(err.message || DEFAULT_ERROR, 'snackbar-error');
+        },
+      });
   }
 
+  private notify(message: string, panelClass: 'snackbar-success' | 'snackbar-error'): void {
+    this.snackbar.open(message, '', {
+      duration: 5000,
+      panelClass: [panelClass],
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+    });
+  }
 }
